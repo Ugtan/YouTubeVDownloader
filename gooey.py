@@ -1,4 +1,4 @@
-""" A GUI based python script to download your favourite videos directly """
+"""A GUI based python script to download your favourite videos directly"""
 
 from PyQt4 import QtCore, QtGui
 from PyQt4.QtGui import QMessageBox
@@ -84,7 +84,7 @@ class Ui_Dialog(object):
         self.start_download.clicked.connect(self.start_)
 
     def about(self):
-        """ To display the About message box """
+        """To display the About message box"""
         msg = QtGui.QMessageBox()
         msg.setText("This Application is created by Ugtan aka Umang Taneja.")
         msg.setInformativeText("You can download your favourite youtube videos in one go only, just by entering the url of the video!")
@@ -94,12 +94,12 @@ class Ui_Dialog(object):
 
 
     def start_(self):
-        """ To start the downloading process """
+        """To start the downloading process"""
         url = self.link.text()
         url = str(url)
         video_quality = str(self.comboBox.currentText())
 
-        if url.startswith('https://youtu.be/'):
+        if url.startswith('https://youtu.be/') or url.startswith('https://www.youtube.com/watch?v='):
             download_message = QtGui.QMessageBox()
             download_message.setText("Requesting video...")
             download_message.setInformativeText("Video download started!")
@@ -125,7 +125,7 @@ class Ui_Dialog(object):
 
 
     def get_path(self):
-        """ To set the path of the video to be downloaded """
+        """To set the path of the video to be downloaded"""
         path = os.getcwd()
         path = path.split("/")[:-1]
         path = "/".join(path)
